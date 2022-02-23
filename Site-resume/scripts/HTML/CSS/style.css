@@ -1,13 +1,13 @@
 .header {
     text-align: center;
-    margin: 0%;
     text-decoration: none;
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 .info {
     margin-left: 150px;
     margin-top: 150px;
+    text-decoration: none;
 }
 
 .info span{
