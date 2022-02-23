@@ -2,6 +2,7 @@
     text-align: center;
     margin: 0%;
     text-decoration: none;
+    margin-top: 15px;
 }
 
 .info {
@@ -10,5 +11,5 @@
 }
 
 .info span{
-    color: grey;
+    color: rgb(63, 63, 63);
 }
