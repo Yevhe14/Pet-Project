@@ -1,0 +1,13 @@
+.header {
+    text-align: center;
+    margin: 0%;
+    text-decoration: none;
+}
+
+.info {
+    margin-left: 10px;
+}
+
+.info span{
+    color: grey;
+}
