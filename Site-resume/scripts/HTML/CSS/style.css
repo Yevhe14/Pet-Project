@@ -1,9 +1,12 @@
-
+body {
+    background-color: rgb(255, 255, 64);
+}
 
 .header {
     text-align: center;
     text-decoration: none;
-    margin-top: 25px;
+    margin: 0;
+    background-color: rgba(90, 90, 90, 0.493);
 }
 
 .info {
