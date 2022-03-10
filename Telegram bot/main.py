@@ -56,11 +56,11 @@ def handle_docs_photo(message):
 def image(message) -> None:
     '''processing incoming image'''
     bot.reply_to(message, "Сейчас наколдую")
-    file_info = bot.get_file(message.document.file_id)
-    file_dawnload = bot.download_file(file_info.file_path)
+    file_info = bot.get_file(message.photo[len(message.photo) - 1].file_id)
+    file_downloaded = bot.download_file(file_info.file_path)
     file_name = "{}_{}.jpg".format(datetime.now().strftime("%Y-%m-%d"), message.from_user.id)
     file_path = "{}/{}".format(images_dir, file_name)
     with open(file_path, 'wb') as file_new:
-        file_new.write(file_dawnload)
+        file_new.write(file_downloaded)
 
 bot.infinity_polling()
