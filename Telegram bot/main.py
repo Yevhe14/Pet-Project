@@ -4,7 +4,7 @@ from PIL import Image, ImageFont, ImageDraw
 
 my_image = Image.open("D:\Python GoIteens\Pet-Project\Telegram bot\p1.png")
 
-title_text = "The Beauty of Nature"
+title_text = "PHOTO"
 
 title_font = ImageFont.truetype('D:\Python GoIteens\Pet-Project\Telegram bot\PlayfairDisplay-VariableFont_wght.ttf', 100)
 
