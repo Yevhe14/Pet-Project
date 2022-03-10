@@ -66,6 +66,7 @@ def image(message) -> None:
     file_path = "{}/{}".format(images_dir, file_name)
     with open(file_path, 'wb') as file_new:
         file_new.write(file_downloaded)
-    print_text_on_photo(file_downloaded, "123", font)
+    print_text_on_photo(file_path, "123")
+
 
 bot.infinity_polling()
