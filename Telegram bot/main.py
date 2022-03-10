@@ -1,4 +1,6 @@
 import logging
+from datetime import datetime
+import os
 
 import telebot
 from PIL import Image, ImageDraw, ImageFont
@@ -6,6 +8,8 @@ from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 Token = "5272300324:AAHCJ1VjTvXJ-RbLu5a71zq5u4lHqapDfzk"
 bot = telebot.TeleBot(Token)
+
+images_dir = 'C:/Users/Acer/Desktop/photo'
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -31,7 +35,6 @@ def print_text_on_photo(image, text, font):
 def start_message(message):
 	bot.send_message(message.chat.id,'Привет')
 
-'''
 @bot.message_handler(content_types=['document'])
 def handle_docs_photo(message):
     try:
@@ -48,23 +51,16 @@ def handle_docs_photo(message):
     except Exception as e:
         bot.reply_to(message, "Сталася помилка!\
             \nСпробуйте знову")
-'''
 
 @bot.message_handler(content_types=['photo'])
-def handle_docs_photo(message):
-
-    try:
-        chat_id = message.chat.id
-
-        file_info = bot.get_file(message.document.file_id)
-        downloaded_file = bot.download_file(file_info.file_path)
-
-        src='C:/Users/Acer/Desktop/photo/' + file_info.file_path;
-        with open(src, 'wb') as new_file:
-           new_file.write(downloaded_file)
-        bot.reply_to(message,"Фото добавлено") 
-
-    except Exception as e:
-        bot.reply_to(message,e )
+def image(message) -> None:
+    '''processing incoming image'''
+    bot.reply_to(message, "Сейчас наколдую")
+    file_info = bot.get_file(message.document.file_id)
+    file_dawnload = bot.download_file(file_info.file_path)
+    file_name = "{}_{}.jpg".format(datetime.now().strftime("%Y-%m-%d"), message.from_user.id)
+    file_path = "{}/{}".format(images_dir, file_name)
+    with open(file_path, 'wb') as file_new:
+        file_new.write(file_dawnload)
 
 bot.infinity_polling()
