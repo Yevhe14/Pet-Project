@@ -18,7 +18,10 @@ logging.basicConfig(
 
 
 #func for add text on photo 
-def print_text_on_photo(image, text, font):
+def print_text_on_photo(file_path, text):
+    font = ImageFont.truetype('D:\Python GoIteens\Pet-Project\Telegram bot\PlayfairDisplay-VariableFont_wght.ttf', 50)
+    image = Image.open(file_path)
+
     draw = ImageDraw.Draw(image)
     width_image, height_image = image.size
     width_text, height_text = draw.textsize(text, font=font)
@@ -34,7 +37,7 @@ def print_text_on_photo(image, text, font):
 @bot.message_handler(commands=['start'])
 def start_message(message):
 	bot.send_message(message.chat.id,'Привет')
-
+'''
 @bot.message_handler(content_types=['document'])
 def handle_docs_photo(message):
     try:
@@ -51,6 +54,7 @@ def handle_docs_photo(message):
     except Exception as e:
         bot.reply_to(message, "Сталася помилка!\
             \nСпробуйте знову")
+'''
 
 @bot.message_handler(content_types=['photo'])
 def image(message) -> None:
@@ -62,5 +66,6 @@ def image(message) -> None:
     file_path = "{}/{}".format(images_dir, file_name)
     with open(file_path, 'wb') as file_new:
         file_new.write(file_downloaded)
+    print_text_on_photo(file_downloaded, "123", font)
 
 bot.infinity_polling()
