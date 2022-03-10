@@ -31,7 +31,7 @@ def print_text_on_photo(image, text, font):
 def start_message(message):
 	bot.send_message(message.chat.id,'Привет')
 
-
+'''
 @bot.message_handler(content_types=['document'])
 def handle_docs_photo(message):
     try:
@@ -48,6 +48,23 @@ def handle_docs_photo(message):
     except Exception as e:
         bot.reply_to(message, "Сталася помилка!\
             \nСпробуйте знову")
+'''
 
+@bot.message_handler(content_types=['photo'])
+def handle_docs_photo(message):
+
+    try:
+        chat_id = message.chat.id
+
+        file_info = bot.get_file(message.document.file_id)
+        downloaded_file = bot.download_file(file_info.file_path)
+
+        src='C:/Users/Acer/Desktop/photo/' + file_info.file_path;
+        with open(src, 'wb') as new_file:
+           new_file.write(downloaded_file)
+        bot.reply_to(message,"Фото добавлено") 
+
+    except Exception as e:
+        bot.reply_to(message,e )
 
 bot.infinity_polling()
