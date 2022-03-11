@@ -1,6 +1,5 @@
 import logging
 from datetime import datetime
-import os
 
 import telebot
 from PIL import Image, ImageDraw, ImageFont
@@ -19,7 +18,7 @@ logging.basicConfig(
 
 #func for add text on photo 
 def print_text_on_photo(file_path, text):
-    font = ImageFont.truetype('D:\Python GoIteens\Pet-Project\Telegram bot\PlayfairDisplay-VariableFont_wght.ttf', 50)
+    font = ImageFont.truetype('D:\Python GoIteens\Pet-Project\Telegram bot\PlayfairDisplay-VariableFont_wght.ttf', 80)
     image = Image.open(file_path)
 
     draw = ImageDraw.Draw(image)
@@ -32,7 +31,7 @@ def print_text_on_photo(file_path, text):
         fill=(0, 0, 0, 0)
     )
 
-    image.save('Result.jpg')
+    image.save(file_path)
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
