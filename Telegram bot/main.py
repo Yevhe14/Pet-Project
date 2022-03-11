@@ -67,8 +67,8 @@ def image(message) -> None:
     with open(file_path, 'wb') as file_new:
         file_new.write(file_downloaded)
     print_text_on_photo(file_path, "123")
-    f = "D:\Python GoIteens\Pet-Project\Result.jpg"
-    
+    photo = open("D:\Python GoIteens\Pet-Project\Result.jpg", 'rb')
+    bot.send_photo(message.chat.id, photo)
 
 
 bot.infinity_polling()
