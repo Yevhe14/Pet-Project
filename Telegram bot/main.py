@@ -53,7 +53,6 @@ def get_text_on_photo(message):
 @bot.message_handler(content_types=['photo'])
 def image(message) -> None:
     global text
-    '''processing incoming image'''
     bot.reply_to(message, "Сейчас наколдую")
     file_info = bot.get_file(message.photo[len(message.photo) - 1].file_id)
     file_downloaded = bot.download_file(file_info.file_path)
