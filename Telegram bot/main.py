@@ -35,7 +35,8 @@ def print_text_on_photo(file_path, text):
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
-	bot.send_message(message.chat.id,'Привет')
+    bot.send_message(message.chat.id, 'Привет')
+
 '''
 @bot.message_handler(content_types=['document'])
 def handle_docs_photo(message):
@@ -57,6 +58,7 @@ def handle_docs_photo(message):
 
 @bot.message_handler(content_types=['photo'])
 def image(message) -> None:
+    
     '''processing incoming image'''
     bot.reply_to(message, "Сейчас наколдую")
     file_info = bot.get_file(message.photo[len(message.photo) - 1].file_id)
