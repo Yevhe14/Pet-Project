@@ -53,17 +53,20 @@ def get_text_on_photo(message):
 @bot.message_handler(content_types=['photo'])
 def image(message) -> None:
     global text
-    bot.reply_to(message, "Сейчас наколдую")
-    file_info = bot.get_file(message.photo[len(message.photo) - 1].file_id)
-    file_downloaded = bot.download_file(file_info.file_path)
-    file_name = "{}_{}.jpg".format(datetime.now().strftime("%Y-%m-%d"), message.from_user.id)
-    file_path = "{}/{}".format(images_dir, file_name)
-    with open(file_path, 'wb') as file_new:
-        file_new.write(file_downloaded)
-    print_text_on_photo(file_path, text)
-    photo = open(file_path, 'rb')
-    bot.send_photo(message.chat.id, photo)
-    text = ''
+    if text != '':
+        bot.reply_to(message, "Сейчас наколдую")
+        file_info = bot.get_file(message.photo[len(message.photo) - 1].file_id)
+        file_downloaded = bot.download_file(file_info.file_path)
+        file_name = "{}_{}.jpg".format(datetime.now().strftime("%Y-%m-%d"), message.from_user.id)
+        file_path = "{}/{}".format(images_dir, file_name)
+        with open(file_path, 'wb') as file_new:
+            file_new.write(file_downloaded)
+        print_text_on_photo(file_path, text)
+        photo = open(file_path, 'rb')
+        bot.send_photo(message.chat.id, photo)
+        text = ''
+    else:
+        bot.reply_to(message, "Ви не ввели текста який хочете додати на фото")
 
 
 bot.infinity_polling()
