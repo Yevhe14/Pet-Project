@@ -48,7 +48,7 @@ def text_on_photo(message):
 def get_text_on_photo(message):
     global text
     text = message.text
-    bot.send_message(message.chat.id, "Видправте фото")
+    bot.send_message(message.chat.id, "Відправте фото")
 '''
 @bot.message_handler(content_types=['document'])
 def handle_docs_photo(message):
@@ -82,6 +82,7 @@ def image(message) -> None:
     print_text_on_photo(file_path, text)
     photo = open(file_path, 'rb')
     bot.send_photo(message.chat.id, photo)
+    
 
 
 bot.infinity_polling()
