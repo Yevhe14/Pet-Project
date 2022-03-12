@@ -41,11 +41,14 @@ def start_message(message):
     bot.send_message(message.chat.id, 'Привет')
 
 @bot.message_handler(commands=['photo'])
-def start_message(message):
-    global text
+def text_on_photo(message):
     bot.send_message(message.chat.id, 'Введіть текст: ')
-    text = message.txt
-    bot.send_message(message.chat.id, 'Відправте фото')
+
+@bot.message_handler(content_types=['text'])
+def get_text_on_photo(message):
+    global text
+    text = message.text
+    bot.send_message(message.chat.id, "Видправте фото")
 '''
 @bot.message_handler(content_types=['document'])
 def handle_docs_photo(message):
