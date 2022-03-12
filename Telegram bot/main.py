@@ -64,7 +64,7 @@ def image(message) -> None:
     print_text_on_photo(file_path, text)
     photo = open(file_path, 'rb')
     bot.send_photo(message.chat.id, photo)
-    
+    text = ''
 
 
 bot.infinity_polling()
