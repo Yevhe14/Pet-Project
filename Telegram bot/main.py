@@ -10,6 +10,9 @@ bot = telebot.TeleBot(Token)
 
 images_dir = 'C:/Users/Acer/Desktop/photo'
 
+text = ''
+
+
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -37,6 +40,12 @@ def print_text_on_photo(file_path, text):
 def start_message(message):
     bot.send_message(message.chat.id, 'Привет')
 
+@bot.message_handler(commands=['photo'])
+def start_message(message):
+    global text
+    bot.send_message(message.chat.id, 'Введіть текст: ')
+    text = message.txt
+    bot.send_message(message.chat.id, 'Відправте фото')
 '''
 @bot.message_handler(content_types=['document'])
 def handle_docs_photo(message):
@@ -58,7 +67,7 @@ def handle_docs_photo(message):
 
 @bot.message_handler(content_types=['photo'])
 def image(message) -> None:
-    
+    global text
     '''processing incoming image'''
     bot.reply_to(message, "Сейчас наколдую")
     file_info = bot.get_file(message.photo[len(message.photo) - 1].file_id)
@@ -67,7 +76,7 @@ def image(message) -> None:
     file_path = "{}/{}".format(images_dir, file_name)
     with open(file_path, 'wb') as file_new:
         file_new.write(file_downloaded)
-    print_text_on_photo(file_path, "123")
+    print_text_on_photo(file_path, text)
     photo = open(file_path, 'rb')
     bot.send_photo(message.chat.id, photo)
 
