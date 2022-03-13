@@ -12,7 +12,7 @@ images_dir = 'C:/Users/Acer/Desktop/photo'
 
 text = ''
 
-git = 'DELETE'
+git = 'DELETE1'
 
 logging.basicConfig(
     level=logging.DEBUG,
