@@ -12,6 +12,7 @@ images_dir = 'C:/Users/Acer/Desktop/photo'
 
 text = ''
 
+
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
