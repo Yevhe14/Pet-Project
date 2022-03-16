@@ -12,6 +12,7 @@ images_dir = 'C:/Users/Acer/Desktop/photo'
 
 text = ''
 
+a = 0
 
 logging.basicConfig(
     level=logging.DEBUG,
