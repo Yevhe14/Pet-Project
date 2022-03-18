@@ -12,6 +12,10 @@ images_dir = 'C:/Users/Acer/Desktop/photo'
 
 text = ''
 
+'''Доделать бота
+    1)Доделать InlineKeyboardButton
+    2)и тд)'''
+
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
