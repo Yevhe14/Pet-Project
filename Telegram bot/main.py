@@ -42,8 +42,6 @@ def start_message(message):
     ru = types.InlineKeyboardButton(text="Руский",callback_data="ru")
     keyboard.add(en,ua,ru)
     bot.send_message(message.chat.id, "Выберете язык(Chouse lenguage):", reply_markup=keyboard)
-    bot.send_message(message.chat.id, 'Выберете язык(Chouse lenguage):')
-
 @bot.message_handler(commands=['photo'])
 def text_on_photo(message):
     bot.send_message(message.chat.id, 'Введіть текст: ')
