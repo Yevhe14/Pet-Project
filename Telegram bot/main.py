@@ -12,14 +12,11 @@ images_dir = 'C:/Users/Acer/Desktop/photo'
 
 text = ''
 
-
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 
-
-#func for add text on photo 
 def print_text_on_photo(file_path, text):
     font = ImageFont.truetype('D:\Python GoIteens\Pet-Project\Telegram bot\PlayfairDisplay-VariableFont_wght.ttf', 80)
     image = Image.open(file_path)
@@ -38,7 +35,7 @@ def print_text_on_photo(file_path, text):
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
-    bot.send_message(message.chat.id, 'Привет')
+    bot.send_message(message.chat.id, 'Выберете язык(Chouse lenguage):')
 
 @bot.message_handler(commands=['photo'])
 def text_on_photo(message):
