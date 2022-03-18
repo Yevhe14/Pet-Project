@@ -3,8 +3,7 @@ from datetime import datetime
 
 import telebot
 from PIL import Image, ImageDraw, ImageFont
-from telebot import types 
-from types import InlineKeyboardButton, InlineKeyboardMarkup
+from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 Token = "5272300324:AAHCJ1VjTvXJ-RbLu5a71zq5u4lHqapDfzk"
 bot = telebot.TeleBot(Token)
@@ -42,7 +41,7 @@ def start_message(message):
     ru = types.InlineKeyboardButton(text="Руский",callback_data="ru")
     keyboard.add(en,ua,ru)
     bot.send_message(message.chat.id, "Выберете язык(Chouse lenguage):", reply_markup=keyboard)
-    
+
 @bot.message_handler(commands=['photo'])
 def text_on_photo(message):
     bot.send_message(message.chat.id, 'Введіть текст: ')
